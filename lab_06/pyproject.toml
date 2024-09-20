@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "lab-06"
+version = "0.1.0"
+description = ""
+authors = ["erica <ericamlmsoares@hotmail.com>"]
+readme = "README.md"
+packages = [{include = "lab_06", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

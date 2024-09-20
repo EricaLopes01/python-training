@@ -14,7 +14,7 @@ With Python and Poetry installed, you can now create and run Jupyter notebooks o
 2. Navigate to the `jupyter` folder and run the following command to activate the virtual environment:
 
 ```bash
-cd .../python/day_01/jupyter
+cd .../python/day_01/lab_03
 poetry shell
 ```
 
