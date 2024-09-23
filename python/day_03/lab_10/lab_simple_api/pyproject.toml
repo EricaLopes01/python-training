@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "lab-simple-api"
+version = "0.1.0"
+description = ""
+authors = ["erica <ericamlmsoares@hotmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.115.0"
+uvicorn = "^0.30.6"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+packages = [
+    { include = "src" }
+]
+
+[tool.poetry.extras]
+fastapi = ["fastapi", "uvicorn"]
+flask = ["flask"]
+
