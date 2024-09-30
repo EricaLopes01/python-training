@@ -1,0 +1,33 @@
+{% extends 'tasks/base.html' %}
+
+{% block title %}Add new task{% endblock %}
+
+{% block content %}
+<h1>Add new task</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    <label for="title">Title:</label>
+    <input type="text" name="title" id="title" placeholder="Título da Tarefa" required>
+    <br><br>
+
+    
+    {% if users %}
+        <label for="assigned_to">Assigned to:</label>
+        <select name="assigned_to" id="assigned_to">
+            
+            <option value="{{ request.user.username }}">Eu</option>
+            
+           
+            {% for user in users %}
+                <option value="{{ user.username }}">{{ user.username }}</option>
+            {% endfor %}
+        </select>
+    {% endif %}
+    <br><br>
+
+    <button type="submit">Add</button>
+</form>
+
+<a href="{% url 'task_list' %}">Go back to the task list</a>
+{% endblock %}

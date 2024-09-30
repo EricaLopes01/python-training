@@ -1,0 +1,31 @@
+{% extends 'tasks/base.html' %}
+
+{% block title %}Lista de Tarefas{% endblock %} <!-- Definido apenas uma vez -->
+
+{% block content %}
+<h1>Tasks List</h1>
+
+<h2>Pending Tasks</h2>
+<ul>
+    {% for task in pending_tasks %}
+        <li>
+            {{ task.title }} (Atribuído a: {{ task.assigned_to.username }})
+            {% if task.assigned_to == request.user or task.created_by == request.user %}
+                <a href="{% url 'complete_task' task.id %}"> Mark as concluded</a>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+
+<h2>Concluded Tasks</h2>
+<ul>
+    {% for task in completed_tasks %}
+        <li>
+            {{ task.title }} (Assigned to: {{ task.assigned_to.username }})
+            <strong>Concluded</strong>
+        </li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'add_task' %}">Add new task</a>
+{% endblock %}
