@@ -1,5 +1,4 @@
 from django.shortcuts import render
-
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -38,7 +37,7 @@ def add_task(request):
             assigned_to_user = request.user  
 
         if title:
-            Task.objects.create(title=title, created_by=request.user, assigned_to=assigned_to_user)
+            Task.objects.create(title=title, assigned_to=assigned_to_user)
         return redirect('task_list')
 
    
@@ -53,7 +52,7 @@ def add_task(request):
 @login_required
 def complete_task(request, task_id):
     task = Task.objects.get(id=task_id)
-    if task.created_by == request.user or task.assigned_to == request.user:
+    if task.assigned_to == request.user:
         task.completed = True
         task.save()
     return redirect('task_list')

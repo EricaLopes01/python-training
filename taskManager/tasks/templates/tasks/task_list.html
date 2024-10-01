@@ -1,6 +1,6 @@
 {% extends 'tasks/base.html' %}
 
-{% block title %}Lista de Tarefas{% endblock %} <!-- Definido apenas uma vez -->
+{% block title %}List Tasks{% endblock %} <!-- Definido apenas uma vez -->
 
 {% block content %}
 <h1>Tasks List</h1>
@@ -9,8 +9,8 @@
 <ul>
     {% for task in pending_tasks %}
         <li>
-            {{ task.title }} (Atribuído a: {{ task.assigned_to.username }})
-            {% if task.assigned_to == request.user or task.created_by == request.user %}
+            {{ task.title }} (Assigned to: {{ task.assigned_to.username }})
+            {% if task.assigned_to == request.user %}
                 <a href="{% url 'complete_task' task.id %}"> Mark as concluded</a>
             {% endif %}
         </li>
